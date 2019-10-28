@@ -1,6 +1,6 @@
 # tensor_app
 
-A new Flutter project.
+flutter_mlkit custom model example
 
 ## Getting Started
 
