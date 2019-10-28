@@ -91,6 +91,11 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.asset('assets/n0.png'),
+            Image.asset('assets/n1.png'),
+            Image.asset('assets/n2.png'),
+            Image.asset('assets/n3.png'),
+            Image.asset('assets/n4.png'),
             Text(
               'You have pushed the button this many times:',
             ),
@@ -98,6 +103,13 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            Image.asset('assets/n5.png'),
+            Image.asset('assets/n6.png'),
+            Image.asset('assets/n6b.png'),
+            Image.asset('assets/n7.png'),
+            Image.asset('assets/n7b.png'),
+            Image.asset('assets/n8.png'),
+            Image.asset('assets/n9.png'),
           ],
         ),
       ),
