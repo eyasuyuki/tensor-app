@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:mlkit/mlkit.dart';
 
 class LcdModel {
@@ -7,5 +9,9 @@ class LcdModel {
   LcdModel() {
     _manager.registerLocalModelSource(
         FirebaseLocalModelSource(modelName: _modelName, assetFilePath: "assets/train.tflite"));
+  }
+
+  Future<List> run(Uint8List inputBytes) async {
+    return _interpreter.run(localModelName: _modelName, inputBytes: inputBytes);
   }
 }
