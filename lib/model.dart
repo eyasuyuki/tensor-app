@@ -10,11 +10,12 @@ class LcdModel {
   final FirebaseModelInterpreter _interpreter = FirebaseModelInterpreter.instance;
   final FirebaseModelManager _manager = FirebaseModelManager.instance;
   LcdModel() {
+    _manager.registerRemoteModelSource(FirebaseRemoteModelSource(modelName: _modelName));
     _manager.registerLocalModelSource(
         FirebaseLocalModelSource(modelName: _modelName, assetFilePath: "assets/train.tflite"));
   }
 
-  Future<List> run(Uint8List inputBytes) async {
+  Future<List<dynamic>> run(Uint8List inputBytes) async {
     return _interpreter.run(localModelName: _modelName, inputOutputOptions: _options, inputBytes: inputBytes);
   }
 }
