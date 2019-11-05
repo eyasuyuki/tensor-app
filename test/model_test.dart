@@ -6,6 +6,8 @@ import 'package:image/image.dart' as img;
 
 void main() {
   testWidgets('Model test', (WidgetTester tester) async {
+    await tester.pumpWidget(MyApp());//TEST
+
     var _model = LcdModel();
     assert(_model != null);
 
@@ -15,10 +17,10 @@ void main() {
     var image = img.decodePng(imageBytes.asUint8List());
     assert(image != null);
 
-    var result = await _model.run(imageToByteList(image));
-    assert(result != null);
-
-    print(result);
+//    var result = await _model.run(imageToByteList(image));
+//    assert(result != null);
+//
+//    print(result);
 
   });
 }

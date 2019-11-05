@@ -34,7 +34,9 @@ class MyApp extends StatelessWidget {
             LcdModel model = LcdModel();
             var imageBytes = (await rootBundle.load('assets/n0.png')).buffer;
             var image = img.decodePng(imageBytes.asUint8List());
+            var start = DateTime.now();
             var result = await model.run(imageToByteList(image));
+            var stop = DateTime.now();
             print('result='+result.toString());//DEBUG
             return result.toString();
           },
@@ -49,10 +51,7 @@ class MyApp extends StatelessWidget {
 class _FutureText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var description = Provider.of<String>(context);
-//    if (description == null) {
-//      description = 'Reading2...';
-//    }
+    final description = Provider.of<String>(context);
     return Center(
       child: Text(description),
     );
@@ -62,16 +61,16 @@ class _FutureText extends StatelessWidget {
 // int model
 Uint8List imageToByteList(img.Image image) {
   var _inputSize = 64;
-  var convertedBytes = new Uint8List(1 * _inputSize * _inputSize * 3);
+  var convertedBytes = new Uint8List(1 * _inputSize * _inputSize * 1);
   var buffer = new ByteData.view(convertedBytes.buffer);
   int pixelIndex = 0;
   for (var i = 0; i < _inputSize; i++) {
     for (var j = 0; j < _inputSize; j++) {
       var pixel = image.getPixel(i, j);
-      buffer.setUint8(pixelIndex, (pixel >> 16) & 0xFF);
-      pixelIndex++;
-      buffer.setUint8(pixelIndex, (pixel >> 8) & 0xFF);
-      pixelIndex++;
+//      buffer.setUint8(pixelIndex, (pixel >> 16) & 0xFF);
+//      pixelIndex++;
+//      buffer.setUint8(pixelIndex, (pixel >> 8) & 0xFF);
+//      pixelIndex++;
       buffer.setUint8(pixelIndex, (pixel) & 0xFF);
       pixelIndex++;
     }
